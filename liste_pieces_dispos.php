@@ -10,6 +10,14 @@ $result2 = $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($result);
 
+$ref = $bdd->query('SELECT pieces FROM name WHERE pieces ORDER BY id DESC');
+
+if(isset($_GET['q']) AND !empty($_GET['q'])) {
+    $q = htmlspecialchars($_GET['q']);
+    $ref = $bdd->query('SELECT pieces FROM name WHERE pieces LIKE "%'.$q.'%" ORDER BY id DESC');
+ header('location: liste_pieces_dispos.php');
+}
+
 
 ?>
 
@@ -37,10 +45,10 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="d-flex col-11 mt-5 mx-auto justify-content-between">
 
 
-            <div class="d-flex align-items-center">
-                <input type="search" class="input-sm form-control" placeholder="Recherche">
-                <button type="submit" class="btn-primary btn-sm">Chercher</button>
-            </div>
+            <form method="GET" action="search.php" class="d-flex align-items-center">
+                <input type="search" name="q" class="input-sm form-control" placeholder="Recherche">
+                <input class="btn-info ml-1" type="submit" value="Chercher">
+            </form>
             <div>
                 <h2 class="text-center">PIECES DISPOS</h2>
             </div>

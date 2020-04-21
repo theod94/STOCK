@@ -2,6 +2,15 @@
 session_start();
 require_once('connexion_base_de_donnee.php');
 require_once('include/config.php');
+
+$ref = $bdd->query('SELECT pieces FROM reference WHERE pieces ORDER BY id DESC');
+
+if(isset($_GET['q']) AND !empty($_GET['q'])) {
+    $q = htmlspecialchars($_GET['q']);
+    $ref = $bdd->query('SELECT pieces FROM reference WHERE pieces LIKE "%'.$q.'%" ORDER BY id DESC');
+    header('location: liste_pieces_dispos.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -24,13 +33,13 @@ require_once('include/config.php');
     ?>
 
     <main>
-        <section class="d-flex justify-content-around section_accueil">
+        <section class="d-md-flex justify-content-around section_accueil">
 
-            <div class="formulaire_references m-3 p-3 col-3">
+            <div class="formulaire_references m-md-3 p-3 col-lg-3">
                 <h3 class="text-center mb-5">PAR REFERENCE</h3>
-                <form method="POST" class="col-12" action="">
+                <form method="GET"  class="col-12" action="">
                     <label class="col-4 p-0" for="">Numéro : </label>
-                    <input class="col-7" type="text">
+                    <input class="col-7" name="q" type="search">
                 </form>
                 <div class="text-center">
                     <button type="submit" class="bouton_ref">Valider</button>
@@ -38,7 +47,7 @@ require_once('include/config.php');
             </div>
 
 
-            <div class="formulaire_modele m-3 p-3 col-3">
+            <div class="formulaire_modele m-md-3 p-3 col-lg-3">
                 <h3 class="text-center mb-5">PAR MODELE</h3>
                 <form method="POST" class="col-12" action="">
                     <label class="col-4 p-0" for="">MARQUE :</label>

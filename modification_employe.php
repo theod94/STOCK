@@ -3,32 +3,45 @@ session_start();
 require_once('connexion_base_de_donnee.php');
 require_once('include/config.php');
 
-// récupère les données de l'utilisateur 
+// récupère les données de l'employé 
 $stmt = $bdd->prepare("SELECT * FROM employes");
 $result2 = $stmt->execute();
-$result = $stmt->fetchAll();
+$resultat = $stmt->fetch();
+$name = $resultat['name'];
+$firstname = $resultat['firstname'];
+$email = $resultat['email'];
+$phone = $resultat['phone'];
+$password = $resultat['password'];
+$statut = $resultat['statut'];
+
+// // au clic de modifier, ça modifie les données de l'employé
+// if (isset($_POST['modifier'])) {
+
+//     $name = $_POST['name'];
+//     $firstname = $_POST['firstname'];
+//     $email = $_POST['email'];
+//     $phone = $_POST['phone']; 
+//     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+//     $statut = $_POST['statut'];
+//     // var_dump($_POST);
+//     // die;
 
 
-if (isset($_POST['ajouter'])) {
+//     $update = "UPDATE employes SET 
+//     name=:name,
+//     firstname=:firstname,
+//     email=:email,
+//     phone=:phone,
+//     password=:password,
+//     statut=:statut;
 
-    $name = $_POST['name'];
-    $firstname = $_POST['firstname'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $password = $_POST['password'];
-    $statut = $_POST['statut'];
 
-    $insert = "INSERT INTO employes 
-    (name, firstname, email, phone, password, statut)
-    VALUES (:name, :firstname, :email, :phone, :password, :statut)";
-    $stmt = $bdd->prepare($insert);
-    $stmt->execute([
-        'name' => $name, 'firstname' => $firstname, 'email' => $email, 'phone' => $phone, 'password' => $password,
-        'statut' => $statut
-    ]);
-    header("location:liste_employes.php");
-}
-?>
+//     $stmt = $bdd->prepare($update);
+//     $result2 = $stmt->execute([':name' => $name, ':firstname' => $firstname, ':email' => $email, ':phone' => $phone, ':password' => $password, 'statut' => ':statut']);
+
+//     header('location: liste_employes.php');
+// }
+// ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -44,15 +57,15 @@ if (isset($_POST['ajouter'])) {
 
 <body class="body_accueil">
 
+
     <?php
     require_once('include/header2.php');
-    // echo password_hash("poiuyt", PASSWORD_DEFAULT);
     ?>
 
     <main>
 
-        <div>
-            <h2 class="text-center titre_liste_piece">AJOUTER UN EMPLOYE</h2>
+    <div>
+            <h2 class="text-center titre_liste_piece">MODIFIER UN EMPLOYE</h2>
         </div>
 
         <div class="col-10 mx-auto">
@@ -73,13 +86,14 @@ if (isset($_POST['ajouter'])) {
                         <label class="col-4" for="">Statut : </label>
                         <input class="col-7" type="text" name="statut" placeholder="statut">
                         <div class="text-center mt-4">
-                            <a><input class="bouton5" type="submit" name="ajouter" value="ajouter"></a>
+                            <a><input class="bouton5" type="submit" name="modifier" value="modifier"></a>
                         </div>
 
                     </div>
                 </form>
             </div>
         </div>
+
     </main>
 
     <?php

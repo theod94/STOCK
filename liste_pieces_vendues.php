@@ -36,7 +36,7 @@ require_once('include/config.php');
 
             <div class="d-flex align-items-center">
                 <input type="search" class="input-sm form-control" placeholder="Recherche">
-                <button type="submit" class="btn-primary btn-sm">Chercher</button>
+                <button type="submit" class="btn-info ml-1">Chercher</button>
             </div>
             <div>
                 <h2 class="text-center">PIECES VENDUES</h2>

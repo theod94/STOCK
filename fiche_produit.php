@@ -40,7 +40,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
 
     <main>
-        <section class="d-flex col-10 mx-auto">
+        <section class="d-md-flex col-md-10 mx-auto">
             <div class="col-6 mb-5">
                 <h2 class="titre_liste_piece pb-4"><?= $result['name'] ?></h2>
 
@@ -57,7 +57,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
 
-            <div class="col-6 mb-5 mx-auto d-flex align-items-center div_droite_stock">
+            <div class="col-md-6 mb-5 mx-auto d-flex align-items-center div_droite_stock">
                 <form method="POST" action="">
                     <div class="d-flex">
                         <label for="" class="pr-2 m-0 col-8">STOCK DISPO : </label>

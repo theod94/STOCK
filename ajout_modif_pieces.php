@@ -76,7 +76,7 @@ if (isset($_POST['ajout_pieces'])) {
                    
         $stmt = $bdd->prepare($insert);
         $stmt->execute(['name' => $filename, ':id_pieces' => $idPieces]);
-        //    header("location:liste_pieces_dispos.php");       
+        header("location:liste_pieces_dispos.php");       
     }
 
     
@@ -109,7 +109,7 @@ if (isset($_POST['ajout_pieces'])) {
 
         <section class="d-flex justify-content-center mt-5 mb-5">
 
-            <div class="formulaire_references p-3 col-4">
+            <div class="formulaire_references p-3 col-md-4">
 
                 <form method="POST" class="col-12" action="" enctype="multipart/form-data">
 

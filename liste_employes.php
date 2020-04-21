@@ -62,7 +62,7 @@ $result = $stmt->fetchAll();
                     echo   '<td>' . $place['phone'] . '</td>';
                     echo   '<td>' . $place['statut'] . '</td>';
                     echo   '<td>';
-                    echo   '<a href="fiche_produit.php"><button type="submit" class="btn-success">MODIFIER</button></a>';
+                    echo   '<a href="modification_employe.php"><button type="submit" class="btn-success">MODIFIER</button></a>';
                     echo   '</td>';
                     echo   '<td>';
                     echo   '<a class="btn bouton5" href="delete_employes.php?Action=Suppression&id='.$place['id'] .      '">SUPPRIMER</a>';

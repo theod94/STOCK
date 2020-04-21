@@ -67,7 +67,7 @@ if (isset($_POST['modifier'])) {
 
     <main>
         <section class="d-flex justify-content-center form_profil">
-            <div class="formulaire_references m-3 p-3 col-3">
+            <div class="formulaire_references m-3 p-3 col-lg-3">
                 <h3 class="text-center mb-5">MES INFOS :</h3>
                 <form method="POST" class="col-12" action="">
 
