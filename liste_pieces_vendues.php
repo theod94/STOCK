@@ -31,7 +31,7 @@ require_once('include/config.php');
     ?>
 
     <main>
-        <div class="d-flex col-11 mt-5 mx-auto justify-content-between">
+        <div class="d-md-flex col-11 mt-5 mx-auto justify-content-between">
 
 
             <div class="d-flex align-items-center">
@@ -39,7 +39,7 @@ require_once('include/config.php');
                 <button type="submit" class="btn-info ml-1">Chercher</button>
             </div>
             <div>
-                <h2 class="text-center">PIECES VENDUES</h2>
+                <h2 class="text-center queries">PIECES VENDUES</h2>
             </div>
             <div></div>
             <div></div>
@@ -50,11 +50,11 @@ require_once('include/config.php');
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">REFERENCE</th>
-                    <th scope="col">PIECE</th>
-                    <th scope="col">CLIENT</th>
-                    <th scope="col">NOMBRE</th>
+                    <th class="hyde" scope="col">PIECE</th>
+                    <th class="hyde" scope="col">CLIENT</th>
+                    <th class="hyde" scope="col">NOMBRE</th>
                     <th scope="col">PRIX</th>
-                    <th scope="col">DATE</th>
+                    <th class="hyde" scope="col">DATE</th>
                     <th scope="col">STOCK</th>
                 </tr>
             </thead>
@@ -62,11 +62,11 @@ require_once('include/config.php');
             <tbody>
                 <tr>
                     <th scope="row">P123YM</th>
-                    <td>Pneu</td>
-                    <td>Jean-Michel</td>
-                    <td>2</td>
+                    <td class="hyde" >Pneu</td>
+                    <td class="hyde" >Jean-Michel</td>
+                    <td class="hyde" >2</td>
                     <td>100€</td>
-                    <td>12/00/2020</td>
+                    <td class="hyde" >12/00/2020</td>
                     <td>3</td>
                     <td><a href="fiche_produit.php" class="bouton4 btn">VOIR</a></td>
                 </tr>

@@ -42,33 +42,34 @@ $result = $stmt->fetchAll();
             <tbody>
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">NOM</th>
-                        <th scope="col">PRENOM</th>
-                        <th scope="col">EMAIL</th>
-                        <th scope="col">PHONE</th>
-                        <th scope="col">STATUT</th>
+                        <th class="show" scope="col">NOM</th>
+                        <th class="hyde" scope="col">PRENOM</th>
+                        <th class="hyde" scope="col">EMAIL</th>
+                        <th class="hyde" scope="col">PHONE</th>
+                        <th class="show" scope="col">STATUT</th>
                     </tr>
                 </thead>
 
                 <?php
                 foreach ($result as $place) {
-            
+
 
 
                     echo '<tr>';
                     echo   '<td>' . $place['name'] . '</td>';
-                    echo   '<td>' . $place['firstname']  .'</td>';
-                    echo   '<td>' . $place['email'] .'</td>';
-                    echo   '<td>' . $place['phone'] . '</td>';
+                    echo   '<td class="hyde">' . $place['firstname']  . '</td>';
+                    echo   '<td class="hyde">' . $place['email'] . '</td>';
+                    echo   '<td class="hyde">' . $place['phone'] . '</td>';
                     echo   '<td>' . $place['statut'] . '</td>';
                     echo   '<td>';
-                    echo   '<a href="modification_employe.php"><button type="submit" class="btn-success">MODIFIER</button></a>';
+                    echo   '<a href="modification_employe.php"><button type="submit" class="btn-success">MODI</button></a>
+                    <a href="modification_employe.php"><button type="submit" class="hyde btn-success">MODIFIER</button></a>';
                     echo   '</td>';
                     echo   '<td>';
-                    echo   '<a class="btn bouton5" href="delete_employes.php?Action=Suppression&id='.$place['id'] .      '">SUPPRIMER</a>';
+                    echo   '<a class="btn bouton5" href="delete_employes.php?Action=Suppression&id=' . $place['id'] .      '">SUP</a>
+                    <a class="hyde btn bouton5" href="delete_employes.php?Action=Suppression&id=' . $place['id'] .      '">SUPPRIMER</a>';
                     echo   '</td>';
                     echo '</tr>';
-
                 }
                 ?>
             </tbody>

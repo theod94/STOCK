@@ -42,7 +42,7 @@ if(isset($_GET['q']) AND !empty($_GET['q'])) {
 
     <main>
 
-        <div class="d-flex col-11 mt-5 mx-auto justify-content-between">
+        <div class="d-md-flex col-11 mt-5 mx-auto justify-content-between">
 
 
             <form method="GET" action="search.php" class="d-flex align-items-center">
@@ -50,7 +50,7 @@ if(isset($_GET['q']) AND !empty($_GET['q'])) {
                 <input class="btn-info ml-1" type="submit" value="Chercher">
             </form>
             <div>
-                <h2 class="text-center">PIECES DISPOS</h2>
+                <h2 class="text-center queries">PIECES DISPOS</h2>
             </div>
             <div></div>
             <div></div>
@@ -63,11 +63,11 @@ if(isset($_GET['q']) AND !empty($_GET['q'])) {
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">REFERENCE</th>
-                        <th scope="col">IMAGE</th>
+                        <th class="hyde" scope="col">IMAGE</th>
                         <th scope="col">NOM DU MODELE</th>
-                        <th scope="col">FABRICANT</th>
-                        <th scope="col">N°ETAGE</th>
-                        <th scope="col">N°ALLEE</th>
+                        <th class="hyde" scope="col">FABRICANT</th>
+                        <th class="hyde" scope="col">N°ETAGE</th>
+                        <th class="hyde" scope="col">N°ALLEE</th>
                         <th scope="col">PRIX</th>
                     </tr>
                 </thead>
@@ -79,11 +79,11 @@ if(isset($_GET['q']) AND !empty($_GET['q'])) {
 
                     <tr>
                         <th scope="row"><?= $place['reference'] ?></th>
-                        <td><img class="image_produit" src="assets/img/<?= $place['imagename'] ?>" alt=""></td>
+                        <td class="hyde"><img class="image_produit" src="assets/img/<?= $place['imagename'] ?>" alt=""></td>
                         <td><?= $place['name'] ?></td>
-                        <td><?= $place['fabriquant'] ?></td>
-                        <td><?= $place['etage'] ?></td>
-                        <td><?= $place['allee'] ?></td>
+                        <td class="hyde"><?= $place['fabriquant'] ?></td>
+                        <td class="hyde"><?= $place['etage'] ?></td>
+                        <td class="hyde"><?= $place['allee'] ?></td>
                         <td><?= $place['prix'] ?></td>
                         <td><a href="fiche_produit.php?id=<?= $place['id'] ?>" class="bouton4 btn">VOIR</a></td>
                     </tr>

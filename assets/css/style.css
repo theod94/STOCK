@@ -339,8 +339,26 @@ a:hover {
   height: 335px;
 }
 
-.barre_nav_hamburger {
-  display: block;
+.tableau {
+  margin-top: 5%;
+} 
+
+.hyde {
+  display: none;
 }
 
-                            }
+.queries {
+  margin-top: 8%;
+}
+
+.popup {
+  margin: 44% auto;
+  width: 80%;
+  background-color: #615c5c;
+  border-radius: 2%;
+  box-shadow: 10px 15px 0 rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  margin-left: 8%;
+}
+
+}
