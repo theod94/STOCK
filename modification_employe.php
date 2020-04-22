@@ -39,9 +39,10 @@ $statut = $resultat['statut'];
 //     $stmt = $bdd->prepare($update);
 //     $result2 = $stmt->execute([':name' => $name, ':firstname' => $firstname, ':email' => $email, ':phone' => $phone, ':password' => $password, 'statut' => ':statut']);
 
-//     header('location: liste_employes.php');
-// }
-// ?>
+//     header('location: liste_employes.php'); }
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -74,17 +75,17 @@ $statut = $resultat['statut'];
                 <form class="formulaire_references mt-5 mb-5 p-3 col-md-3 mx-auto" method="POST" action="">
                     <div class="">
                         <label class="col-4" for="">Nom : </label>
-                        <input class="col-7" type="text" name="name" placeholder="name">
+                        <input class="col-7" type="text" name="name" placeholder="name" value="<?= $resultat['name'] ?>">
                         <label class="col-4 p-0" for="">Prénom : </label>
-                        <input class="col-7" type="text" name="firstname" placeholder="firstname">
+                        <input class="col-7" type="text" name="firstname" placeholder="firstname" value="<?= $resultat['firstname'] ?>">
                         <label class="col-4" for="">Email : </label>
-                        <input class="col-7" type="email" name="email" placeholder="email">
+                        <input class="col-7" type="email" name="email" placeholder="email" value="<?= $resultat['email'] ?>" >
                         <label class="col-4" for="">Phone : </label>
-                        <input class="col-7" type="text" name="phone" placeholder="phone">
+                        <input class="col-7" type="text" name="phone" placeholder="phone" value="<?= $resultat['phone'] ?>" >
                         <label class="col-4 p-0" for="">Password : </label>
-                        <input class="col-7" type="password" name="password" placeholder="password">
+                        <input class="col-7" type="password" name="password" placeholder="password" value="<?= $resultat['password'] ?>" >
                         <label class="col-4" for="">Statut : </label>
-                        <input class="col-7" type="text" name="statut" placeholder="statut">
+                        <input class="col-7" type="text" name="statut" placeholder="statut" value="<?= $resultat['statut'] ?>" >
                         <div class="text-center mt-4">
                             <a><input class="bouton5" type="submit" name="modifier" value="modifier"></a>
                         </div>

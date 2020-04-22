@@ -1,3 +1,4 @@
+
 /* COVERFLOW ACCUEIL */
 
 .gallery {
@@ -274,21 +275,6 @@
 
 
 /* BARRE DE NAVIGATION */
-
-.barre_nav_hamburger {
-  display: none;
-}
-
-.fa-1x {
-  font-size: 1.5rem;
-  }
-  .navbar-toggler.toggler-example {
-  cursor: pointer;
-  }
-  .dark-blue-text {
-  color: #0A38F5;
-  }
-
 
 a {
     text-decoration: none;

@@ -2,6 +2,7 @@
 session_start();
 require_once('connexion_base_de_donnee.php');
 require_once('include/config.php');
+require_once('classes/employes.php');
 
 // récupère les données de l'utilisateur 
 $stmt = $bdd->prepare("SELECT * FROM employes");
@@ -11,22 +12,20 @@ $result = $stmt->fetchAll();
 
 if (isset($_POST['ajouter'])) {
 
-    $name = $_POST['name'];
-    $firstname = $_POST['firstname'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $password = $_POST['password'];
-    $statut = $_POST['statut'];
+    $object = new Employes();
 
-    $insert = "INSERT INTO employes 
-    (name, firstname, email, phone, password, statut)
-    VALUES (:name, :firstname, :email, :phone, :password, :statut)";
-    $stmt = $bdd->prepare($insert);
-    $stmt->execute([
-        'name' => $name, 'firstname' => $firstname, 'email' => $email, 'phone' => $phone, 'password' => $password,
-        'statut' => $statut
-    ]);
-    header("location:liste_employes.php");
+    $object->setBdd($bdd);
+    $object->setName($_POST['name']);
+    $object->setFirstname($_POST['firstname']);
+    $object->setEmail($_POST['email']);
+    $object->setPhone($_POST['phone']);
+    $password = password_hash(($_POST['password']), PASSWORD_BCRYPT);
+    $object->setPassword($_POST['password']);
+    $object->setStatut($_POST['statut']);
+
+    if ($object->insert()) {
+        header("location:liste_employes.php");
+    }
 }
 ?>
 

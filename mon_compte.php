@@ -2,6 +2,7 @@
 session_start();
 require_once('connexion_base_de_donnee.php');
 require_once('include/config.php');
+require_once('classes/employes.php');
 
 // récupère les données de l'employé 
 $stmt = $bdd->prepare("SELECT * FROM employes where id=:id");
@@ -18,30 +19,36 @@ $statut = $resultat['statut'];
 // au clic de modifier, ça modifie les données de l'employé
 if (isset($_POST['modifier'])) {
 
-    $name = $_POST['name'];
-    $firstname = $_POST['firstname'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone']; 
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $statut = $_POST['statut'];
+    $object = new Employes();
+
+    $object->setBdd($bdd);
+    $object->setName($_POST['name']);
+    $object->setFirstname($_POST['firstname']);
+    $object->setEmail($_POST['email']);
+    $object->setPhone($_POST['phone']);
+    $password = password_hash(($_POST['password']), PASSWORD_BCRYPT);
+    $object->setPassword($_POST['password']);
+    $object->setStatut($_POST['statut']);
     // var_dump($_POST);
     // die;
 
 
-    $update = "UPDATE employes SET 
-    name=:name,
-    firstname=:firstname,
-    email=:email,
-    phone=:phone,
-    password=:password,
-    statut=:statut, 
-    WHERE id=:id";
+    // $update = "UPDATE employes SET 
+    // name=:name,
+    // firstname=:firstname,
+    // email=:email,
+    // phone=:phone,
+    // password=:password,
+    // statut=:statut, 
+    // WHERE id=:id";
 
 
-    $stmt = $bdd->prepare($update);
-    $result2 = $stmt->execute([':name' => $name, ':firstname' => $firstname, ':email' => $email, ':phone' => $phone, ':password' => $password, 'statut' => $statut, ':id' => ($_SESSION['id'])]);
+    // $stmt = $bdd->prepare($update);
+    // $result2 = $stmt->execute([':name' => $name, ':firstname' => $firstname, ':email' => $email, ':phone' => $phone, ':password' => $password, 'statut' => $statut, ':id' => ($_SESSION['id'])]);
 
-    header('location: mon_compte.php');
+    if ($object->update()) {
+        header('location: mon_compte.php');
+    }
 }
 
 ?>
