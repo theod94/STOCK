@@ -32,7 +32,8 @@
             <i class="fa fa-user fa-lg d-flex align-items-center ml-2 p-2"></i>
             <a class="nav-link lien_mon_compte d-flex align-items-end" href="#">Admin</a><span class="separator">/</span>
             <a class="nav-link lien_mon_compte d-flex align-items-end" href="mon_compte.php">Mon compte</a>
-            <a class="nav-link btn-info border " href="deconnexion.php">LOGOUT</a>
+            <a class="nav-link btn-light
+     border " href="deconnexion.php">LOGOUT</a>
         </div>
 
         </nav>

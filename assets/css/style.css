@@ -221,6 +221,24 @@
 	box-shadow:3px 3px rgb(0, 0, 0);
 }
 
+.bouton6 {
+	padding:6px 0 6px 0;
+	font:13px Arial;
+	background:rgb(85, 217, 235);
+	color:white;
+  border:1px solid rgb(53, 117, 236);
+	width:100px;
+	box-shadow:3px 3px rgb(0, 0, 0);}
+
+.bouton6:hover {
+	padding:6px 0 6px 0;
+	font:13px Arial;
+	background:rgb(172, 42, 25);
+	color:white;
+	width:100px;
+	box-shadow:3px 3px rgb(0, 0, 0);
+}
+
 .body_connexion {
     background-color: orange;
 }

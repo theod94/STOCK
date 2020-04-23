@@ -2,46 +2,49 @@
 session_start();
 require_once('connexion_base_de_donnee.php');
 require_once('include/config.php');
+require_once('classes/employes.php');
 
 // récupère les données de l'employé 
-$stmt = $bdd->prepare("SELECT * FROM employes");
-$result2 = $stmt->execute();
-$resultat = $stmt->fetch();
-$name = $resultat['name'];
-$firstname = $resultat['firstname'];
-$email = $resultat['email'];
-$phone = $resultat['phone'];
-$password = $resultat['password'];
-$statut = $resultat['statut'];
+
+// $name = $resultat['name'];
+// $firstname = $resultat['firstname'];
+// $email = $resultat['email'];
+// $phone = $resultat['phone'];
+// $password = $resultat['password'];
+// $statut = $resultat['statut'];
+
+$object = new Employes();
+
+$object->setId($_SESSION['id']);
+
+$employesInfo = $object->select();
 
 // // au clic de modifier, ça modifie les données de l'employé
-// if (isset($_POST['modifier'])) {
+if (isset($_POST['modifier'])) {
 
-//     $name = $_POST['name'];
-//     $firstname = $_POST['firstname'];
-//     $email = $_POST['email'];
-//     $phone = $_POST['phone']; 
-//     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-//     $statut = $_POST['statut'];
-//     // var_dump($_POST);
-//     // die;
+    $object->setBdd($bdd);
+    // var_dump($bdd);
+    $object->setId($_SESSION['id']);
+    $object->setName($_POST['name']);
+    $object->setFirstname($_POST['firstname']);
+    $object->setEmail($_POST['email']);
+    $object->setPhone($_POST['phone']);
 
+    $object->setStatut($_POST['statut']);
 
-//     $update = "UPDATE employes SET 
-//     name=:name,
-//     firstname=:firstname,
-//     email=:email,
-//     phone=:phone,
-//     password=:password,
-//     statut=:statut;
+    if ($_POST['password'] == '') {
+        $password = $employesInfo['password'];
+    } else {
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    }
 
-
-//     $stmt = $bdd->prepare($update);
-//     $result2 = $stmt->execute([':name' => $name, ':firstname' => $firstname, ':email' => $email, ':phone' => $phone, ':password' => $password, 'statut' => ':statut']);
-
-//     header('location: liste_employes.php'); }
-
-
+    $object->setPassword($_POST['password']);
+    //     // var_dump($_POST);
+    //     // die;
+    if ($object->update()) {
+        header("location:liste_employes.php");
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +68,7 @@ $statut = $resultat['statut'];
 
     <main>
 
-    <div>
+        <div>
             <h2 class="text-center titre_liste_piece">MODIFIER UN EMPLOYE</h2>
         </div>
 
@@ -75,17 +78,17 @@ $statut = $resultat['statut'];
                 <form class="formulaire_references mt-5 mb-5 p-3 col-md-3 mx-auto" method="POST" action="">
                     <div class="">
                         <label class="col-4" for="">Nom : </label>
-                        <input class="col-7" type="text" name="name" placeholder="name" value="<?= $resultat['name'] ?>">
+                        <input class="col-7" type="text" name="name" placeholder="name" value="<?= $object['name'] ?>">
                         <label class="col-4 p-0" for="">Prénom : </label>
-                        <input class="col-7" type="text" name="firstname" placeholder="firstname" value="<?= $resultat['firstname'] ?>">
+                        <input class="col-7" type="text" name="firstname" placeholder="firstname" value="<?= $object['firstname'] ?>">
                         <label class="col-4" for="">Email : </label>
-                        <input class="col-7" type="email" name="email" placeholder="email" value="<?= $resultat['email'] ?>" >
+                        <input class="col-7" type="email" name="email" placeholder="email" value="<?= $object['email'] ?>">
                         <label class="col-4" for="">Phone : </label>
-                        <input class="col-7" type="text" name="phone" placeholder="phone" value="<?= $resultat['phone'] ?>" >
+                        <input class="col-7" type="text" name="phone" placeholder="phone" value="<?= $object['phone'] ?>">
                         <label class="col-4 p-0" for="">Password : </label>
-                        <input class="col-7" type="password" name="password" placeholder="password" value="<?= $resultat['password'] ?>" >
+                        <input class="col-7" type="password" name="password" placeholder="password" value="<?= $object['password'] ?>">
                         <label class="col-4" for="">Statut : </label>
-                        <input class="col-7" type="text" name="statut" placeholder="statut" value="<?= $resultat['statut'] ?>" >
+                        <input class="col-7" type="text" name="statut" placeholder="statut" value="<?= $object['statut'] ?>">
                         <div class="text-center mt-4">
                             <a><input class="bouton5" type="submit" name="modifier" value="modifier"></a>
                         </div>

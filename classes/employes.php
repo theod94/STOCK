@@ -96,6 +96,18 @@ class Employes
         return $this;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+
 
 
     public function insert()
@@ -121,6 +133,16 @@ class Employes
 
 
         $stmt =  $this->bdd->prepare($update);
-        $result2 = $stmt->execute([':name' => $this->name, ':firstname' =>  $this->firstname, ':email' => $this->email, ':phone' =>  $this->phone, ':password' => $this->password, 'statut' =>  $this->statut, ':id' => $this->id]);
+        return $stmt->execute([':name' => $this->name, ':firstname' =>  $this->firstname, ':email' => $this->email, ':phone' =>  $this->phone, ':password' => $this->password, 'statut' =>  $this->statut, ':id' => $this->id]);
+    }
+
+    public function select()
+    {
+
+        $select = "SELECT * FROM employes WHERE id=:id";
+
+        $stmt = $this->bdd->prepare($select);
+        $stmt->execute([':id' => $this->id]);
+        return $stmt->fetch();
     }
 }

@@ -47,6 +47,7 @@ $result = $stmt->fetchAll();
                         <th class="hyde" scope="col">EMAIL</th>
                         <th class="hyde" scope="col">PHONE</th>
                         <th class="show" scope="col">STATUT</th>
+                        <th class="show text-center" colspan="2" scope="col">ACTION</th>
                     </tr>
                 </thead>
 
@@ -62,11 +63,11 @@ $result = $stmt->fetchAll();
                     echo   '<td class="hyde">' . $place['phone'] . '</td>';
                     echo   '<td>' . $place['statut'] . '</td>';
                     echo   '<td>';
-                    echo   '<a href="modification_employe.php"><button type="submit" class="btn-success">MODI</button></a>
+                    echo   '<a href="modification_employe.php"><button type="submit" class="d-md-none btn-success">MOD</button></a>
                     <a href="modification_employe.php"><button type="submit" class="hyde btn-success">MODIFIER</button></a>';
                     echo   '</td>';
                     echo   '<td>';
-                    echo   '<a class="btn bouton5" href="delete_employes.php?Action=Suppression&id=' . $place['id'] .      '">SUP</a>
+                    echo   '<a class="d-md-none btn bouton5" href="delete_employes.php?Action=Suppression&id=' . $place['id'] .      '">SUP</a>
                     <a class="hyde btn bouton5" href="delete_employes.php?Action=Suppression&id=' . $place['id'] .      '">SUPPRIMER</a>';
                     echo   '</td>';
                     echo '</tr>';
