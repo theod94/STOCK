@@ -3,9 +3,6 @@ session_start();
 require_once('connexion_base_de_donnee.php');
 require_once('include/config.php');
 
-$ref = $bdd->query('SELECT pieces FROM reference WHERE pieces ORDER BY id DESC');
-
-
 
 ?>
 

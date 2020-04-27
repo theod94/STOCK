@@ -10,14 +10,16 @@ $result2 = $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($result);
 
-$ref = $bdd->query('SELECT pieces FROM name WHERE pieces ORDER BY id DESC');
-
 if(isset($_POST['q']) AND !empty($_POST['q'])) {
     $q = htmlspecialchars(trim($_POST['q']));
     $stmt = $bdd->query('SELECT pieces.*, images.name as imagename FROM pieces 
-    inner join images ON pieces.id=images.id_pieces WHERE reference LIKE "%'.$q.'%" ORDER BY id DESC');
+    inner join images ON pieces.id=images.id_pieces 
+    WHERE reference LIKE "%'.$q.'%" 
+    OR pieces.fabriquant LIKE "%'.$q.'%" 
+    ORDER BY id DESC');
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // header('location: liste_pieces_dispos.php');
+    // var_dump($result);
+
 }
 
 
