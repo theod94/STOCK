@@ -128,12 +128,14 @@ class Employes
         email=:email,
         phone=:phone,
         password=:password,
-        statut=:statut, 
+        statut=:statut
         WHERE id=:id";
 
 
         $stmt =  $this->bdd->prepare($update);
-        return $stmt->execute([':name' => $this->name, ':firstname' =>  $this->firstname, ':email' => $this->email, ':phone' =>  $this->phone, ':password' => $this->password, 'statut' =>  $this->statut, ':id' => $this->id]);
+         $stmt->execute([':name' => $this->name, ':firstname' =>  $this->firstname, ':email' => $this->email, ':phone' =>  $this->phone, ':password' => $this->password, ':statut' =>  $this->statut, ':id' => $this->id]);
+
+        var_dump($stmt->debugDumpParams());
     }
 
     public function select()

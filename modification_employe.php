@@ -16,15 +16,14 @@ require_once('classes/employes.php');
 $object = new Employes();
 
 $object->setId($_SESSION['id']);
-
+$object->setBdd($bdd);
+// var_dump($object);
 $employesInfo = $object->select();
 
 // // au clic de modifier, ça modifie les données de l'employé
 if (isset($_POST['modifier'])) {
 
-    $object->setBdd($bdd);
     // var_dump($bdd);
-    $object->setId($_SESSION['id']);
     $object->setName($_POST['name']);
     $object->setFirstname($_POST['firstname']);
     $object->setEmail($_POST['email']);
@@ -78,17 +77,17 @@ if (isset($_POST['modifier'])) {
                 <form class="formulaire_references mt-5 mb-5 p-3 col-md-3 mx-auto" method="POST" action="">
                     <div class="">
                         <label class="col-4" for="">Nom : </label>
-                        <input class="col-7" type="text" name="name" placeholder="name" value="<?= $object['name'] ?>">
+                        <input class="col-7" type="text" name="name" placeholder="name" value="<?= $employesInfo['name'] ?>">
                         <label class="col-4 p-0" for="">Prénom : </label>
-                        <input class="col-7" type="text" name="firstname" placeholder="firstname" value="<?= $object['firstname'] ?>">
+                        <input class="col-7" type="text" name="firstname" placeholder="firstname" value="<?= $employesInfo['firstname'] ?>">
                         <label class="col-4" for="">Email : </label>
-                        <input class="col-7" type="email" name="email" placeholder="email" value="<?= $object['email'] ?>">
+                        <input class="col-7" type="email" name="email" placeholder="email" value="<?= $employesInfo['email'] ?>">
                         <label class="col-4" for="">Phone : </label>
-                        <input class="col-7" type="text" name="phone" placeholder="phone" value="<?= $object['phone'] ?>">
+                        <input class="col-7" type="text" name="phone" placeholder="phone" value="<?= $employesInfo['phone'] ?>">
                         <label class="col-4 p-0" for="">Password : </label>
-                        <input class="col-7" type="password" name="password" placeholder="password" value="<?= $object['password'] ?>">
+                        <input class="col-7" type="password" name="password" placeholder="password" value="<?= $employesInfo['password'] ?>">
                         <label class="col-4" for="">Statut : </label>
-                        <input class="col-7" type="text" name="statut" placeholder="statut" value="<?= $object['statut'] ?>">
+                        <input class="col-7" type="text" name="statut" placeholder="statut" value="<?= $employesInfo['statut'] ?>">
                         <div class="text-center mt-4">
                             <a><input class="bouton5" type="submit" name="modifier" value="modifier"></a>
                         </div>

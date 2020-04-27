@@ -38,6 +38,7 @@ if (isset($_POST['login'])) {
 
     <?php
     require_once('include/header.php');
+    // echo password_hash("poiuyt", PASSWORD_DEFAULT);
     ?>
 
     <main>

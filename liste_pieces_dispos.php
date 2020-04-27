@@ -12,10 +12,12 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $ref = $bdd->query('SELECT pieces FROM name WHERE pieces ORDER BY id DESC');
 
-if(isset($_GET['q']) AND !empty($_GET['q'])) {
-    $q = htmlspecialchars($_GET['q']);
-    $ref = $bdd->query('SELECT pieces FROM name WHERE pieces LIKE "%'.$q.'%" ORDER BY id DESC');
- header('location: liste_pieces_dispos.php');
+if(isset($_POST['q']) AND !empty($_POST['q'])) {
+    $q = htmlspecialchars(trim($_POST['q']));
+    $stmt = $bdd->query('SELECT pieces.*, images.name as imagename FROM pieces 
+    inner join images ON pieces.id=images.id_pieces WHERE reference LIKE "%'.$q.'%" ORDER BY id DESC');
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // header('location: liste_pieces_dispos.php');
 }
 
 
@@ -45,7 +47,7 @@ if(isset($_GET['q']) AND !empty($_GET['q'])) {
         <div class="d-md-flex col-11 mt-5 mx-auto justify-content-between">
 
 
-            <form method="GET" action="search.php" class="d-flex align-items-center">
+            <form method="POST" action="liste_pieces_dispos.php" class="d-flex align-items-center">
                 <input type="search" name="q" class="input-sm form-control" placeholder="Recherche">
                 <input class="btn-info ml-1" type="submit" value="Chercher">
             </form>
@@ -85,6 +87,7 @@ if(isset($_GET['q']) AND !empty($_GET['q'])) {
                         <td class="hyde"><?= $place['etage'] ?></td>
                         <td class="hyde"><?= $place['allee'] ?></td>
                         <td><?= $place['prix'] ?></td>
+                        <td><a href="fiche_produit.php?id=<?= $place['id'] ?>" class="bouton4 btn">MODIFIER</a></td>
                         <td><a href="fiche_produit.php?id=<?= $place['id'] ?>" class="bouton4 btn">VOIR</a></td>
                     </tr>
 

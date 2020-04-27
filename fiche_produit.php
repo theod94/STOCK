@@ -62,7 +62,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="d-flex">
                         <label for="" class="pr-2 m-0 col-8">STOCK DISPO : </label>
                         <br>
-                        <input class="col-2 pl-0 pr-0" type="text" value="5">
+                        <p>5</p>
                     </div>
 
                     <br>
