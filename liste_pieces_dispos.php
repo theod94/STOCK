@@ -89,6 +89,7 @@ if(isset($_POST['q']) AND !empty($_POST['q'])) {
                         <td class="hyde"><?= $place['etage'] ?></td>
                         <td class="hyde"><?= $place['allee'] ?></td>
                         <td><?= $place['prix'] ?></td>
+                        <td><a href="delete_pieces.php?Action=Suppression&id=<?= $place['id'] ?>" class="bouton5 btn">SUPPRIMER</td>
                         <td><a href="modification_pieces.php?id=<?= $place['id'] ?>" class="bouton4 btn">MODIFIER</a></td>
                         <td><a href="fiche_produit.php?id=<?= $place['id'] ?>" class="bouton4 btn">VOIR</a></td>
                     </tr>
