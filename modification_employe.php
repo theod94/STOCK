@@ -41,7 +41,7 @@ if (isset($_POST['modifier'])) {
     //     // var_dump($_POST);
     //     // die;
     if ($object->update()) {
-        header("location:liste_employes.php");
+        header("location:liste_pieces_dispos.php");
     }
 }
 ?>
