@@ -33,12 +33,12 @@ if (isset($_POST['modifier'])) {
     } else {
         $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     }
-    
+
     $object->setPassword($_POST['password']);
     $object->setStatut($_POST['statut']);
     // var_dump($_POST);
     // die;
-    
+
 
     // $update = "UPDATE employes SET 
     // name=:name,

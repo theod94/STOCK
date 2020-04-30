@@ -3,12 +3,13 @@ session_start();
 require_once('connexion_base_de_donnee.php');
 require_once('include/config.php');
 
-// récupère les données de l'utilisateur 
-// $stmt = $bdd->prepare("SELECT pieces.*, utilisateurs.name as username, image.name as imagename FROM post")
-// // -- inner join image ON post.id=image.id_post
-// // -- inner join utilisateurs ON post.id_user=utilisateurs.id;
+// // récupère les données de la table
+// $stmt = $bdd->prepare("SELECT pieces.*, images.name as imagename FROM pieces 
+// inner join images ON pieces.id=images.id_pieces");
 // $result2 = $stmt->execute();
-// $result = $stmt->fetchAll();
+// $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// // var_dump($result);
+
 ?>
 
 <!DOCTYPE html>
@@ -60,16 +61,7 @@ require_once('include/config.php');
             </thead>
 
             <tbody>
-                <tr>
-                    <th scope="row">P123YM</th>
-                    <td class="hyde" >Pneu</td>
-                    <td class="hyde" >Jean-Michel</td>
-                    <td class="hyde" >2</td>
-                    <td>100€</td>
-                    <td class="hyde" >12/00/2020</td>
-                    <td>3</td>
-                    <td><a href="fiche_produit.php" class="bouton4 btn">VOIR</a></td>
-                </tr>
+            
             </tbody>
 
         </table>

@@ -42,10 +42,6 @@
                 <option value="Clignotants">CLIGNOTANTS</option>
             </select>
             <br>
-            
-            <!-- <option value="Harley-Davidson">Harley-Davidson</option>
-                        <option value="Aprilia">Aprilia</option>
-                        <option value="Suzuki">Suzuki</option> -->
 
             <div class="text-center">
                 <button type="submit" class="mb-3 mt-3 bouton_ref">Valider</button>
