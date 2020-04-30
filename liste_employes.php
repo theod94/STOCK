@@ -5,8 +5,7 @@ require_once('include/config.php');
 
 // récupère les données de l'utilisateur 
 $stmt = $bdd->prepare("SELECT * FROM employes");
-//  -- inner join image ON post.id=image.id_post
-//  -- inner join utilisateurs ON post.id_user=utilisateurs.id;
+
 $result2 = $stmt->execute();
 $result = $stmt->fetchAll();
 
@@ -63,8 +62,8 @@ $result = $stmt->fetchAll();
                     echo   '<td class="hyde">' . $place['phone'] . '</td>';
                     echo   '<td>' . $place['statut'] . '</td>';
                     echo   '<td>';
-                    echo   '<a href="modification_employe.php"><button type="submit" class="d-md-none btn-success">MOD</button></a>
-                    <a href="modification_employe.php"><button type="submit" class="hyde btn-success">MODIFIER</button></a>';
+                    echo   '<a href="modification_employe.php?id=' . $place['id'] . '"><button type="submit" class="d-md-none btn bouton4">MOD</button></a>
+                    <a href="modification_employe.php?id=' . $place['id'] . '"><button type="submit" class="hyde btn bouton4">MODIFIER</button></a>';
                     echo   '</td>';
                     echo   '<td>';
                     echo   '<a class="d-md-none btn bouton5" href="delete_employes.php?Action=Suppression&id=' . $place['id'] .      '">SUP</a>

@@ -126,10 +126,9 @@ class Pieces
         
 
         $stmt =  $this->bdd->prepare($update);
-        var_dump($stmt);
+
         $result = $stmt->execute([':reference' => $this->reference, ':fabriquant' =>  $this->fabriquant, ':name' => $this->name, ':allee' =>  $this->allee, ':etage' => $this->etage, ':prix' =>  $this->prix, ':id' => $this->id]);
         
-        var_dump($result);
-        var_dump($stmt->debugDumpParams());
+        
     } 
 }

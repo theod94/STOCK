@@ -5,9 +5,10 @@ require_once('include/config.php');
 require_once('classes/employes.php');
 
 // récupère les données de l'employé 
-$stmt = $bdd->prepare("SELECT * FROM employes where id=:id");
+$stmt = $bdd->prepare("SELECT * FROM employes WHERE id=:id");
 $result2 = $stmt->execute([':id' => $_SESSION['id']]);
 $resultat = $stmt->fetch();
+
 $name = $resultat['name'];
 $firstname = $resultat['firstname'];
 $email = $resultat['email'];
@@ -36,22 +37,6 @@ if (isset($_POST['modifier'])) {
 
     $object->setPassword($_POST['password']);
     $object->setStatut($_POST['statut']);
-    // var_dump($_POST);
-    // die;
-
-
-    // $update = "UPDATE employes SET 
-    // name=:name,
-    // firstname=:firstname,
-    // email=:email,
-    // phone=:phone,
-    // password=:password,
-    // statut=:statut, 
-    // WHERE id=:id";
-
-
-    // $stmt = $bdd->prepare($update);
-    // $result2 = $stmt->execute([':name' => $name, ':firstname' => $firstname, ':email' => $email, ':phone' => $phone, ':password' => $password, 'statut' => $statut, ':id' => ($_SESSION['id'])]);
 
     if ($object->update()) {
         header('location: mon_compte.php');

@@ -6,14 +6,12 @@ require_once('classes/pieces.php');
 
 $pcs = new Pieces();
 
-
-
-// // au clic de modifier, ça modifie les données de la piece
+// au clic de modifier, ça modifie les données de la piece
 if (isset($_POST['modifier'])) {
 
     $pcs->setId($_POST['piece_id']);
     $pcs->setBdd($bdd);
-    // var_dump($bdd);
+
     $pcs->setReference($_POST['reference']);
     $pcs->setFabriquant($_POST['fabriquant']);
     $pcs->setName($_POST['name']);
@@ -21,13 +19,13 @@ if (isset($_POST['modifier'])) {
     $pcs->setEtage($_POST['etage']);
     $pcs->setPrix($_POST['prix']);
 
-    //  var_dump($_POST);
+
     if ($pcs->update()) {
         header("location:liste_pieces_dispos.php");
     }
 }
 
-// récupère les données de l'employé 
+// récupère les données de la piece 
 $stmt = $bdd->prepare("SELECT pieces.*, images.name as imagename FROM pieces 
 inner join images ON pieces.id=images.id_pieces
 WHERE pieces.id=:id");
@@ -35,13 +33,14 @@ WHERE pieces.id=:id");
 $id = (int) $_GET['id'];
 $result2 = $stmt->execute(['id' => $id]);
 $resultat = $stmt->fetch();
+
 $reference = $resultat['reference'];
 $fabriquant = $resultat['fabriquant'];
 $name = $resultat['name'];
 $allee = $resultat['allee'];
 $etage = $resultat['etage'];
 $prix = $resultat['prix'];
-// var_dump($resultat);
+
 
 ?>
 
